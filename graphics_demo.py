@@ -25,6 +25,10 @@ BLUE = (0, 0, 255)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 ORANGE = (255, 125 , 0)
+BRIGHT_BLUE = (39, 172, 244)
+PURPLE = (179, 39, 244)
+BRIGHT_GREEN = (70, 244, 39)
+YELLOW = (244, 234, 41)
     
 
 # Game loop
@@ -42,15 +46,31 @@ while not done:
     ''' leave this section alone for now ''' 
 
     # Drawing code (Describe the picture. It isn't actually drawn yet.)
-    screen.fill(WHITE)
-    pygame.draw.rect(screen, RED, [50, 50, 400, 300])
-    pygame.draw.line(screen, GREEN, [300, 40], [100,500], 5)
-    pygame.draw.ellipse(screen, BLUE, [100, 100, 600, 300])
-    pygame.draw.polygon(screen, BLACK, [[200, 200], [50,400], [600, 500]], 10)
+    screen.fill(BRIGHT_BLUE)
+    '''ground'''
+    pygame.draw.rect(screen, BRIGHT_GREEN, [0, 450, 800, 600])
+
+    '''house'''
+    pygame.draw.rect(screen, ORANGE, [300, 250, 300, 200])
+    pygame.draw.rect(screen, BLACK, [300, 250, 300, 200], 3)
+    pygame.draw.polygon(screen, BLACK, [[250, 250], [450, 150], [650, 250]], 5)
+    pygame.draw.polygon(screen, RED, [[250, 250], [450, 150], [650, 250]])
+    pygame.draw.rect(screen, BLACK, [400, 300, 100, 150], 5)
+    pygame.draw.rect(screen, PURPLE, [400, 300, 100, 150])
+    pygame.draw.ellipse(screen, BLACK, [415, 360, 15, 15])
+
+    '''sun'''
+    pygame.draw.ellipse(screen, YELLOW, [20, 20, 100, 100])
+    pygame.draw.line(screen, YELLOW, [0, 60], [30, 60], 3)
+    pygame.draw.line(screen, YELLOW, [5, 30], [30, 40], 3)
+
+    '''pygame.draw.line(screen, GREEN, [300, 40], [100,500], 5)'''
+    '''pygame.draw.ellipse(screen, BLUE, [100, 100, 600, 300])'''
+    '''pygame.draw.polygon(screen, BLACK, [[200, 200], [50,400], [600, 500]], 10)'''
 
     ''' angles for arcs are measured in radians (a pre-cal topic) '''
-    pygame.draw.arc(screen, ORANGE, [100, 100, 100, 100], 0, math.pi/2, 1)
-    pygame.draw.arc(screen, BLACK, [100, 100, 100, 100], 0, math.pi/2, 50)
+    '''pygame.draw.arc(screen, ORANGE, [100, 100, 100, 100], 0, math.pi/2, 1)'''
+    '''pygame.draw.arc(screen, BLACK, [100, 100, 100, 100], 0, math.pi/2, 50)'''
 
 
     # Update screen (Actually draw the picture in the window.)
