@@ -16,7 +16,7 @@ pygame.display.set_caption(TITLE)
 
 # Timer
 clock = pygame.time.Clock()
-refresh_rate = 60
+refresh_rate = 30
 
 
 # Colors
@@ -33,7 +33,19 @@ YELLOW = (244, 234, 41)
 BROWN = (99, 63, 9)
 DARK_GREEN = (12, 135, 24)
 
+# Make clouds
+num_clouds = 20
+clouds = []
+for i in range(num_clouds):
+    x = random.randrange(0, 1600)
+    y = random.randrange(-50, 200)
+    loc = [x, y]
+    clouds.append(loc)
+
 def draw_cloud(x, y):
+    x = loc[0]
+    y = loc[1]
+
     pygame.draw.ellipse(screen, WHITE, [x, y + 20, 40 , 40])
     pygame.draw.ellipse(screen, WHITE, [x + 60, y + 20, 40 , 40])
     pygame.draw.ellipse(screen, WHITE, [x + 20, y + 10, 25, 25])
@@ -73,7 +85,13 @@ while not done:
 
     # Game logic (Check for collisions, update points, etc.)
     ''' leave this section alone for now ''' 
+    for c in clouds:
+        c[0] += 2
 
+        if c[0] > 900:
+           c[0] = random.randrange(-800, 0)
+           c[1] = random.randrange(-50, 200)
+           
     # Drawing code (Describe the picture. It isn't actually drawn yet.)
     '''sky'''
     screen.fill(BRIGHT_BLUE)
@@ -103,16 +121,8 @@ while not done:
     pygame.draw.line(screen, YELLOW, [45, 25], [30, 5], 3)
 
     '''clouds'''
-    draw_cloud(150, 75)
-    draw_cloud(200, 75)
-    draw_cloud(350, 10)
-    draw_cloud(400, 20)
-    draw_cloud(650, 70)
-    draw_cloud(280, 20)
-    draw_cloud(550, 100)
-    draw_cloud(350, 20)
-    draw_cloud(700, 70)
-    draw_cloud(500, 100)
+    for c in clouds:
+        draw_cloud(c)
 
     '''fence'''
     y = 380
