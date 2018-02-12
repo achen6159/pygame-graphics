@@ -1,7 +1,7 @@
-# Computer Programming 1
+# A scene that can become a sunny day or a rainy night
 # Unit 11 - Graphics
 #
-# A scene that uses loops to make stars and make a picket fence.
+# Annie C. 
 
 
 # Imports
@@ -104,10 +104,6 @@ for i in range(num_huge_drops):
     hr = [x, y, r, r, stop]
     hrain.append(hr)
 
-# Lightning stuff
-lightning_prob = 200
-lightning_timer = 0
-
 # Sound Effects
 pygame.mixer.music.load("sounds/rain.ogg")
 thunder = pygame.mixer.Sound("sounds/thunder.ogg")
@@ -147,9 +143,9 @@ def draw_house(x, y):
     pygame.draw.rect(screen, PURPLE, [x + 100, 300, 100, 150])
     pygame.draw.ellipse(screen, BLACK, [x + 115, y + 110, 15, 15])
 
-def draw_window(x, y,):
-    pygame.draw.rect(screen, WHITE, [x + 15, y + 20, 70, 70])
-    pygame.draw.rect(screen, WHITE, [x + 215, y + 20, 70, 70])
+def draw_window(x, y, color):
+    pygame.draw.rect(screen, color, [x + 15, y + 20, 70, 70])
+    pygame.draw.rect(screen, color, [x + 215, y + 20, 70, 70])
     pygame.draw.rect(screen, BLACK, [x + 15, y + 20, 70, 70], 3)
     pygame.draw.rect(screen, BLACK, [x + 215, y + 20, 70, 70], 3)
     pygame.draw.line(screen, BLACK, [x + 15 , y + 55], [x + 85, y + 55], 3)
@@ -246,14 +242,14 @@ while not done:
     if daytime:
         sky = BRIGHT_BLUE
         cloud = WHITE
-        #color = WHITE
+        color = WHITE
         lightning = False
         pygame.mixer.music.play(-1)
         
     else:
         sky = GREY_BLUE
         cloud = GREY
-        #color = YELLOW
+        color = YELLOW
         
         
     # Drawing code
@@ -307,7 +303,7 @@ while not done:
     draw_house(300, 250)
                      
     '''window'''
-    draw_window(300, 250)
+    draw_window(300, 250, color)
     
     '''bushes'''
     draw_bushes(260, 280)
@@ -344,7 +340,8 @@ while not done:
     draw_flowers(120, 540)
     draw_flowers(350, 500)
     draw_flowers(450, 530)
-
+    draw_flowers(550, 490)
+    
     ''' big rain '''
     if not daytime:
         for br in brain:
